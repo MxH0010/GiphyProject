@@ -39,12 +39,19 @@ fetch(path).then(function(res){
     const resultsEl= document.getElementById('results')
     let resultsHTML = ''
     json.data.forEach(function(obj){
-console.log(obj.images.fixed_width)
+console.log(obj)
+
 const url = obj.images.fixed_width.url
 const width = obj.images.fixed_width.width
 const height = obj.images.fixed_width.height
-resultsHTML += `<img scr="${url}" width="${width}"
-height="${height}">`
+const title = obj.title
+
+resultsHTML += `<img 
+src="${url}"
+width="${width}"
+height="${height}"
+alt="${title}"
+>`
     })
 
     resultsEl.innerHTML = resultsHTML
