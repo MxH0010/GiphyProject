@@ -13,7 +13,7 @@
 
     <header>
 <form id="search-form">
-    <input type="text" palceholder="search">
+    <input id="search-input"type="text" palceholder="search">
     <button type="submit"> Search </button>
 </form>
     </header>
@@ -27,14 +27,20 @@
 
 <script>
 
-const searchForm =document.getElementById('search-form')
+const searchForm = document.getElementById('search-form')
+const searchInput = document.getElementById('search-input')
 
+searchForm.addEventListener('submit',function(e){
+    e.preventDefault()
+    const q = searchInput.value
+search(q)
+    
+})
 
+function search(q){
 
-const q = 'cats'
 const apikey = 'YxAhXKRS76xfyJRb5LwHBbOle6HtS2yi'
 const path = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}`
-
 
 
 fetch(path).then(function(res){
@@ -63,6 +69,8 @@ alt="${title}"
 }).catch(function(err){
     console.log(err.message)
 })
+
+}
 
 
 </script>
