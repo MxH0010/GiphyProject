@@ -32,7 +32,13 @@ const apikey = 'YxAhXKRS76xfyJRb5LwHBbOle6HtS2yi'
 const path = 'https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}'
 
 
-fetch(path)
+fetch(path).then(function(res){
+    return res.json()
+}).then(function(json){
+    console.log(json)
+}).catch(function(err){
+    console.log(err.message)
+})
 
 
 </script>
